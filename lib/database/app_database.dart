@@ -4,6 +4,8 @@ import 'package:path/path.dart';
 // pacote sqflite: API para trabalhar com SQLite em Flutter/Dart.
 import 'package:sqflite/sqflite.dart';
 
+import 'package:flutter/foundation.dart';
+
 import '../models/transferencia.dart';
 
 import '../models/contato.dart';
@@ -95,7 +97,7 @@ Future<void> testeBanco() async {
   final bool existe = await arquivoBanco.exists();
 
   if (existe) {
-    print('****Banco de dados encontrado: $path');
+    debugPrint('****Banco de dados encontrado: $path');
     final Database db = await openDatabase(path);
 
     final List<Map<String, dynamic>> tabelas = await db.rawQuery(
@@ -103,15 +105,15 @@ Future<void> testeBanco() async {
     );
 
     if (tabelas.isNotEmpty) {
-      print('****Tabelas encontradas:');
+      debugPrint('****Tabelas encontradas:');
       for (var tabela in tabelas) {
-        print('- ${tabela['name']}');
+        debugPrint('- ${tabela['name']}');
       }
     } else {
-      print('****Nenhuma tabela encontrada no banco.');
+      debugPrint('****Nenhuma tabela encontrada no banco.');
     }
     await db.close();
   } else {
-    print('XXXX - O arquivo do banco de dados não foi encontrado em: $path');
+    debugPrint('XXXX - O arquivo do banco de dados não foi encontrado em: $path');
   }
 }

@@ -6,9 +6,10 @@ import './screens/dashboard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Intl.defaultLocale = 'pt_BR';
   await testeBanco();
 
-  runApp(BankApp());
+  runApp(const BankApp());
 }
 
 class BankApp extends StatelessWidget {
@@ -16,7 +17,6 @@ class BankApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Intl.defaultLocale = "pt_BR";
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

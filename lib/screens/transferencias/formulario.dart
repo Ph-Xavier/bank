@@ -9,11 +9,8 @@ class FormularioTransferencia extends StatefulWidget {
   final int? numeroConta; // nova propriedade opcional
   const FormularioTransferencia({super.key, this.numeroConta}); // construtor com parâmetro
 
-
   @override
-  State<StatefulWidget> createState() {
-    return FormularioTransferenciaState();
-  }
+  State<FormularioTransferencia> createState() => FormularioTransferenciaState();
 }
 
 class FormularioTransferenciaState extends State<FormularioTransferencia> {
@@ -30,15 +27,15 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
   static const _textoBotaoConfirmar = 'Confirmar';
 
   @override
-
-  void initState(){
+  void initState() {
     super.initState();
 
-    if(widget.numeroConta != null){
+    if (widget.numeroConta != null) {
       _controladorCampoNumeroConta.text = widget.numeroConta.toString();
     }
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

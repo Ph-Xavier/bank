@@ -5,12 +5,12 @@ import 'package:intl/intl.dart';
 import '../../database/app_database.dart';
 
 class ListaTransferencias extends StatefulWidget {
+  ListaTransferencias({super.key});
+
   final List<Transferencia> _transferencias = [];
 
   @override
-  State<StatefulWidget> createState() {
-    return ListaTransferenciaState();
-  }
+  State<ListaTransferencias> createState() => ListaTransferenciaState();
 }
 
 class ListaTransferenciaState extends State<ListaTransferencias> {
@@ -96,11 +96,11 @@ class ListaTransferenciaState extends State<ListaTransferencias> {
 class ItemTransferencia extends StatelessWidget {
   final Transferencia _transferencia;
 
-  ItemTransferencia(this._transferencia);
+  const ItemTransferencia(this._transferencia, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    NumberFormat formato = NumberFormat.simpleCurrency();
+    final NumberFormat formato = NumberFormat.simpleCurrency();
     return Card(
       child: ListTile(
         leading: Icon(Icons.monetization_on),
