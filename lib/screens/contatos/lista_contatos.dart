@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'formulario_contato.dart';
 import '../../models/contato.dart';
-import '../../database/app_database.dart';
+import '../../repository/bank_repository.dart';
 import '../transferencias/formulario.dart';
 
 class ListaContatos extends StatefulWidget {
@@ -23,9 +23,9 @@ class _ListaContatosState extends State<ListaContatos> {
   }
 
   void _carregarContatosDoBanco() async {
-    final contatosDoBanco = await buscarContatos();
+    final contatos = await RepositorioBank.instancia.buscarContatos();
     setState(() {
-      widget._contatos.addAll(contatosDoBanco);
+      widget._contatos.addAll(contatos);
     });
   }
 
@@ -72,10 +72,10 @@ class _ListaContatosState extends State<ListaContatos> {
               });
             } else {
               // Se quiser, também podemos recarregar do banco caso o usuário feche o formulário sem retornar contato
-              final contatosDoBanco = await buscarContatos();
+              final contatos = await RepositorioBank.instancia.buscarContatos();
               setState(() {
                 widget._contatos.clear();
-                widget._contatos.addAll(contatosDoBanco);
+                widget._contatos.addAll(contatos);
               });
             }
           });
